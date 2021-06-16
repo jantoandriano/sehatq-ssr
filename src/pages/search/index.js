@@ -7,6 +7,7 @@ import filterSearch from "../../utils/filter";
 import arrow from "../../assets/arrow_back.svg";
 import { Back } from "./styles";
 import { HStack, Container } from "../styles";
+import withAuth from "../utils/withAuth";
 
 function Search() {
   const [input, setInput] = useState("");
@@ -40,4 +41,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default withAuth(Search);

@@ -5,8 +5,9 @@ import { Back, Header } from "./styles";
 import { Container } from "../styles";
 import arrow from "../../assets/arrow_back.svg";
 import Item from "../../components/Item";
+import withAuth from "../../utils/withAuth";
 
-function Wishlist() {
+const Wishlist = () => {
   const router = useRouter();
 
   const wishListProducts = useSelector(
@@ -30,4 +31,4 @@ function Wishlist() {
   );
 }
 
-export default Wishlist;
+export default withAuth(Wishlist);

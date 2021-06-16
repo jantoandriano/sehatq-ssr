@@ -5,6 +5,7 @@ import { Back, Header } from "./styles";
 import { Container, HStack } from "../styles";
 import arrow from "../../assets/arrow_back.svg";
 import Item from "../../components/Item";
+import withAuth from "../utils/withAuth";
 
 function PurchasedHistory() {
   const router = useRouter();
@@ -35,4 +36,4 @@ function PurchasedHistory() {
   );
 }
 
-export default PurchasedHistory;
+export default withAuth(PurchasedHistory);
