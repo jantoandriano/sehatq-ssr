@@ -1,9 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useRouter } from "next/router";
-import withRedux from "next-redux-wrapper";
-
 import { useDispatch, useSelector } from "react-redux";
-import store from "../store";
 import { Love, Scroll } from "./styles";
 import { HStack, VStack, Container } from "./styles";
 import Searchbar from "../components/Searchbar";
