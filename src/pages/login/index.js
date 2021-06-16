@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import Checkbox from "../../components/Checkbox";
@@ -15,7 +16,7 @@ import { VStack, HStack } from "../styles";
 import {
   handleLoginFacebook,
   handleLoginGmail,
-  fakeLogin
+  fakeLogin,
 } from "../../features/authSlice";
 import { FaFacebookSquare } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
@@ -25,7 +26,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleSignIn = () => {
-    dispatch(fakeLogin(router.push("/")))
+    dispatch(fakeLogin(router.push("/")));
   };
 
   const handleFacebook = async () => {
@@ -37,29 +38,36 @@ function Login() {
   };
 
   return (
-    <Wrapper>
-      <Title>LOGIN</Title>
-      <VStack>
-        <InputEmail type="text" />
-        <InputPassword type="password" />
-      </VStack>
+    <>
+      <Head>
+        <title>Login Page</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="Icon" href="../../public/favicon.ico" />
+      </Head>
+      <Wrapper>
+        <Title>LOGIN</Title>
+        <VStack>
+          <InputEmail type="text" />
+          <InputPassword type="password" />
+        </VStack>
 
-      <HStack style={{ marginTop: "20px" }}>
-        <Checkbox />
-        <SignIn onClick={handleSignIn}>Sign in</SignIn>
-      </HStack>
+        <HStack style={{ marginTop: "20px" }}>
+          <Checkbox />
+          <SignIn onClick={handleSignIn}>Sign in</SignIn>
+        </HStack>
 
-      <VStack style={{ marginTop: "20px" }}>
-        <LoginFacebook onClick={handleFacebook}>
-          <FaFacebookSquare style={{ marginRight: "10px" }} /> Sign in with
-          Facebook
-        </LoginFacebook>
-        <LoginGmail onClick={handleGmail}>
-          <SiGmail style={{ marginRight: "10px" }} />
-          Sign in with Gmail
-        </LoginGmail>
-      </VStack>
-    </Wrapper>
+        <VStack style={{ marginTop: "20px" }}>
+          <LoginFacebook onClick={handleFacebook}>
+            <FaFacebookSquare style={{ marginRight: "10px" }} /> Sign in with
+            Facebook
+          </LoginFacebook>
+          <LoginGmail onClick={handleGmail}>
+            <SiGmail style={{ marginRight: "10px" }} />
+            Sign in with Gmail
+          </LoginGmail>
+        </VStack>
+      </Wrapper>
+    </>
   );
 }
 
