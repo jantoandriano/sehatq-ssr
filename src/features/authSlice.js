@@ -36,7 +36,7 @@ export const handleLoginFacebook = () => {
 
       localStorage.setItem("access_token", response.credential.accessToken);
 
-      window.location.href = "/beranda";
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +53,7 @@ export const handleLoginGmail = () => {
 
       localStorage.setItem("access_token", response.credential.accessToken);
 
-      window.location.href = "/beranda";
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
     }
