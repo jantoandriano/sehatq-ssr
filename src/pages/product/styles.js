@@ -3,9 +3,7 @@ import Image from "next/image";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsFillHeartFill } from "react-icons/bs";
 
-export const ProductImage = styled.img`
-  width: 100%;
-  height: 200px;
+export const ProductImage = styled(Image)`
   background-color: lavender;
 `;
 

@@ -52,7 +52,7 @@ function DetailProduct() {
       </Head>
       <Container>
         <div style={{ position: "relative" }}>
-          <ProductImage src={imageUrl} />
+          <ProductImage src={imageUrl} width="100%" height="200px" />
           <Back onClick={handleBack}>
             <Image src={arrow} width={40} height={40} />
           </Back>
