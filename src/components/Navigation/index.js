@@ -5,7 +5,7 @@ import { Wrapper, NavbarItem } from "./styles";
 function Navigation() {
   return (
     <Wrapper>
-      <Link href="/beranda" passHref>
+      <Link href="/" passHref>
         <NavbarItem>Home</NavbarItem>
       </Link>
       <Link href="/">
