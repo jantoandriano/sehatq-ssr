@@ -42,7 +42,7 @@ function Login() {
       <Head>
         <title>Login Page</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="Icon" href="../../public/favicon.ico" />
+        <link rel="Icon" href="../../../public/favicon.ico" />
       </Head>
       <Wrapper>
         <Title>LOGIN</Title>

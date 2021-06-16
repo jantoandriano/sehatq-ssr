@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { useSelector } from "react-redux";
 import Item from "../../components/Item";
 import Searchbar from "../../components/Searchbar";
@@ -31,13 +32,24 @@ function Search() {
   };
 
   return (
-    <Container>
-      <HStack>
-        <Back src={arrow} onClick={handleBack} width="40px" height="40px" />
-        <Searchbar ref={searchRef} value={input} handleSearch={handleSearch} />
-      </HStack>
-      {input && filterProduct.map((val) => <Item key={val.id} {...val} />)}
-    </Container>
+    <>
+      <Head>
+        <title>Search Page</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="Icon" href="../../../public/favicon.ico" />
+      </Head>
+      <Container>
+        <HStack>
+          <Back src={arrow} onClick={handleBack} width="40px" height="40px" />
+          <Searchbar
+            ref={searchRef}
+            value={input}
+            handleSearch={handleSearch}
+          />
+        </HStack>
+        {input && filterProduct.map((val) => <Item key={val.id} {...val} />)}
+      </Container>
+    </>
   );
 }
 

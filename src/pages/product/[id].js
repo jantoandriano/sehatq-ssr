@@ -20,7 +20,7 @@ import arrow from "../../assets/arrow_back.svg";
 import share from "../../assets/share.svg";
 import { purchaseProduct, addWishList } from "../../features/productSlice";
 import { share as Toast } from "../../utils/toast";
-import withAuth from "../utils/withAuth";
+import withAuth from "../../utils/withAuth";
 
 function DetailProduct() {
   const router = useRouter();
@@ -49,7 +49,7 @@ function DetailProduct() {
       <Head>
         <title>Product Detail</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="Icon" href="../../public/favicon.ico" />
+        <link rel="Icon" href="../../../public/favicon.ico" />
       </Head>
       <Container>
         <div style={{ position: "relative" }}>
