@@ -59,6 +59,8 @@ export const fetchProducts = () => {
         "https://private-4639ce-ecommerce56.apiary-mock.com/home"
       );
       let response = await productApi.fetchProducts();
+      dispatch(productsLoaded(response.data.products))
+      dispatch(categoriesLoaded(response.data.categories))
 
       return response;
     } catch (err) {}

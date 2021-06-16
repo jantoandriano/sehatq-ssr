@@ -9,7 +9,7 @@ import ProductCard from "../components/ProductCard";
 import Navigation from "../components/Navigation";
 import withAuth from "../utils/withAuth";
 import { wrapper } from "../store";
-import { fetchProducts, productsLoaded, categoriesLoaded } from "../features/productSlice";
+import { fetchProducts } from "../features/productSlice";
 
 const Home = (props) => {
   const searchRef = useRef(null);
@@ -54,8 +54,7 @@ const Home = (props) => {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
     let response = await store.dispatch(fetchProducts());
-    store.dispatch(productsLoaded(response.data.products))
-    store.dispatch(categoriesLoaded(response.data.categories))
+    
     return {
       props: {
         response

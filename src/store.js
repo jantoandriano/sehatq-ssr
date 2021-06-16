@@ -11,11 +11,4 @@ const makeStore = () =>
     },
   });
 
-// export default configureStore({
-//   reducer: {
-//     products: productReducer,
-//     auth: authReducer,
-//   },
-// });
-
 export const wrapper = createWrapper(makeStore);
