@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, HStack, FlexEnd } from "../styles";
 import {
@@ -17,11 +18,11 @@ import {
 import arrow from "../../assets/arrow_back.svg";
 import share from "../../assets/share.svg";
 import { purchaseProduct, addWishList } from "../../features/productSlice";
-import { share as Toast } from '../../utils/toast'
+import { share as Toast } from "../../utils/toast";
 
 function DetailProduct() {
   const router = useRouter();
-  const { id } = useParams();
+  const { id } = router.query;
   const dispatch = useDispatch();
   const { imageUrl, title, description, price, loved } = useSelector((state) =>
     state.products.productsName.find((product) => product.id === id)
@@ -31,7 +32,7 @@ function DetailProduct() {
     router.goBack();
   };
 
-  const handleShare = () => Toast("Shared 🦄")
+  const handleShare = () => Toast("Shared 🦄");
 
   const handleBuy = () => {
     dispatch(purchaseProduct(id));
@@ -45,8 +46,13 @@ function DetailProduct() {
     <Container>
       <div style={{ position: "relative" }}>
         <ProductImage src={imageUrl} />
-        <Back src={arrow} onClick={handleBack} />
-        <Share src={share} onClick={handleShare} />
+        <Back onClick={handleBack}>
+          <Image src={arrow} onClick={handleBack} width={40} height={40} />
+        </Back>
+
+        <Share>
+          <Image src={share} onClick={handleShare} width={40} height={40} />
+        </Share>
       </div>
 
       <ProductBody>

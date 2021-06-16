@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsFillHeartFill } from "react-icons/bs";
 
@@ -8,7 +9,7 @@ export const ProductImage = styled.img`
   background-color: lavender;
 `;
 
-export const Back = styled.img`
+export const Back = styled.div`
   width: 40px;
   height: 40px;
   position: absolute;
@@ -16,7 +17,7 @@ export const Back = styled.img`
   left: 0;
 `;
 
-export const Share = styled.img`
+export const Share = styled.div`
   width: 30px;
   height: 40px;
   position: absolute;
