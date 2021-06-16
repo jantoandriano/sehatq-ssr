@@ -14,7 +14,13 @@ function ProductCard({ id, imageUrl, title, loved }) {
   return (
     <Wrapper>
       <Link href={`/product/${id}`}>
-        <ImageProduct src={imageUrl} width={200} height={200} />
+        <ImageProduct
+          src={imageUrl}
+          width={200}
+          height={200}
+          blurDataURL={imageUrl}
+          placeholder="blur"
+        />
       </Link>
       <ProductName>{title}</ProductName>
       {loved ? (
