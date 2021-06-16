@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../api/productApi";
 import { share as Toast } from "../utils/toast";
+import { HYDRATE } from "next-redux-wrapper";
 
 export const productSlice = createSlice({
   name: "products",
@@ -34,6 +35,12 @@ export const productSlice = createSlice({
       Toast("Added to Wishlist");
     },
   },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      state.categories = action.payload.products.categories;
+      state.productsName = action.payload.products.productsName;
+    },
+  },
 });
 
 export const {
@@ -53,8 +60,6 @@ export const fetchProducts = () => {
       );
       let response = await productApi.fetchProducts();
 
-      dispatch(productsLoaded(response.data.products));
-      dispatch(categoriesLoaded(response.data.categories));
       return response;
     } catch (err) {}
   };

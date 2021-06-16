@@ -1,24 +1,19 @@
 import React, { useRef } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useStore } from "react-redux";
 import { Love, Scroll } from "./styles";
 import { HStack, VStack, Container } from "./styles";
 import Searchbar from "../components/Searchbar";
 import Category from "../components/Category";
 import ProductCard from "../components/ProductCard";
 import Navigation from "../components/Navigation";
-import api from "../api/productApi";
-import { productsLoaded, categoriesLoaded } from "../features/productSlice";
 import withAuth from "../utils/withAuth";
+import { wrapper } from "../store";
+import { fetchProducts, productsLoaded, categoriesLoaded } from "../features/productSlice";
 
 const Home = (props) => {
   const searchRef = useRef(null);
   const router = useRouter();
-  const store = useStore();
-
-  store.dispatch(productsLoaded(props.response.data.products));
-  store.dispatch(categoriesLoaded(props.response.data.categories));
 
   const handleFocus = (e) => {
     router.push("/search");
@@ -56,21 +51,17 @@ const Home = (props) => {
   );
 };
 
-export async function getStaticProps() {
-  let response;
-  try {
-    let productApi = new api(
-      "https://private-4639ce-ecommerce56.apiary-mock.com/home"
-    );
-    let res = await productApi.fetchProducts();
-    response = res;
-  } catch (err) {
-    console.log(err, "===");
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    let response = await store.dispatch(fetchProducts());
+    store.dispatch(productsLoaded(response.data.products))
+    store.dispatch(categoriesLoaded(response.data.categories))
+    return {
+      props: {
+        response
+      },
+    };
   }
-
-  return {
-    props: { response },
-  };
-}
+);
 
 export default withAuth(Home);

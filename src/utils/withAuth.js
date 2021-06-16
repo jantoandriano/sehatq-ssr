@@ -14,7 +14,7 @@ const withAuth = (WrappedComponent) => {
       } else {
         // we call the api that verifies the token.
         const data = verifyToken(accessToken);
-        console.log(data, "verify");
+        // console.log(data, "verify");
         // if token was verified we set the state.
         if (data) {
           setVerified(true);
@@ -35,7 +35,7 @@ const withAuth = (WrappedComponent) => {
 };
 
 function verifyToken(verifyToken) {
-  console.log(verifyToken, "verifyToken");
+  // console.log(verifyToken, "verifyToken");
   if (!verifyToken) {
     return false;
   }
