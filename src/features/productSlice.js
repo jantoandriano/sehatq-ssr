@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../api/productApi";
 import { share as Toast } from "../utils/toast";
-import { HYDRATE } from "next-redux-wrapper";
 
 export const productSlice = createSlice({
   name: "products",
@@ -35,12 +34,6 @@ export const productSlice = createSlice({
       Toast("Added to Wishlist");
     },
   },
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      state.categories = action.payload.products.categories;
-      state.productsName = action.payload.products.productsName;
-    },
-  },
 });
 
 export const {
@@ -52,17 +45,13 @@ export const {
 
 export default productSlice.reducer;
 
-export const fetchProducts = () => {
-  return async (dispatch, getState) => {
-    try {
-      let productApi = new api(
-        "https://private-4639ce-ecommerce56.apiary-mock.com/home"
-      );
-      let response = await productApi.fetchProducts();
-      dispatch(productsLoaded(response.data.products))
-      dispatch(categoriesLoaded(response.data.categories))
+export const fetchProducts = async () => {
+  try {
+    let productApi = new api(
+      "https://private-4639ce-ecommerce56.apiary-mock.com/home"
+    );
+    let response = await productApi.fetchProducts();
 
-      return response;
-    } catch (err) {}
-  };
+    return response;
+  } catch (err) {}
 };
