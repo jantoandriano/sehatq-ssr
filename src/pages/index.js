@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useStore } from "react-redux";
 import { Love, Scroll } from "./styles";
 import { HStack, VStack, Container } from "./styles";
 import Searchbar from "../components/Searchbar";
@@ -9,12 +9,15 @@ import Category from "../components/Category";
 import ProductCard from "../components/ProductCard";
 import Navigation from "../components/Navigation";
 import api from "../api/productApi";
-import { fetchProducts } from "../features/productSlice";
+import { productsLoaded, categoriesLoaded } from "../features/productSlice"
 
 const Home = (props) => {
   const searchRef = useRef(null);
   const router = useRouter();
-  const dispatch = useDispatch();
+  const store = useStore()
+
+  store.dispatch(productsLoaded(props.response.data.products))
+  store.dispatch(categoriesLoaded(props.response.data.categories))
 
   const handleFocus = (e) => {
     router.push("/search");
@@ -23,14 +26,6 @@ const Home = (props) => {
   const handleToWishListPage = () => {
     router.push("/wishlist");
   };
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
-  if (props.categories !== undefined && props.products !== undefined) {
-    return <h1>Loading...</h1>;
-  }
 
   return (
     <>
@@ -45,12 +40,12 @@ const Home = (props) => {
           <Searchbar ref={searchRef} handleFocus={handleFocus} />
         </HStack>
         <Scroll>
-          {props.response.categories.map((category) => (
+          {props.response.data.categories.map((category) => (
             <Category key={category.id} {...category} />
           ))}
         </Scroll>
         <VStack>
-          {props.response.products.map((product) => (
+          {props.response.data.products.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
         </VStack>
@@ -60,19 +55,14 @@ const Home = (props) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   let response;
   try {
     let productApi = new api(
       "https://private-4639ce-ecommerce56.apiary-mock.com/home"
     );
-    const { data } = await productApi.fetchProducts();
-
-    response = data;
-
-    dispatch(productsLoaded(response.products));
-    dispatch(categoriesLoaded(response.categories));
-    return response;
+    let res = await productApi.fetchProducts();
+    response = res;
   } catch (err) {
     console.log(err, "===");
   }
