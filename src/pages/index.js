@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import Head from "next/head"
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { Love, Scroll } from "./styles";
@@ -30,7 +31,12 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>SehatQ</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="Icon" href="../../public/favicon.ico" />
+      </Head>
       <Container>
         <HStack>
           <Love onClick={handleToWishListPage} />
@@ -48,7 +54,7 @@ const Home = () => {
         </VStack>
       </Container>
       <Navigation />
-    </div>
+    </>
   );
 };
 

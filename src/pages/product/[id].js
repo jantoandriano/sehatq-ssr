@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, HStack, FlexEnd } from "../styles";
@@ -29,7 +30,7 @@ function DetailProduct() {
   );
 
   const handleBack = () => {
-    router.goBack();
+    router.push("/");
   };
 
   const handleShare = () => Toast("Shared 🦄");
@@ -43,35 +44,42 @@ function DetailProduct() {
   };
 
   return (
-    <Container>
-      <div style={{ position: "relative" }}>
-        <ProductImage src={imageUrl} />
-        <Back onClick={handleBack}>
-          <Image src={arrow} onClick={handleBack} width={40} height={40} />
-        </Back>
+    <>
+      <Head>
+        <title>Product Detail</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="Icon" href="../../public/favicon.ico" />
+      </Head>
+      <Container>
+        <div style={{ position: "relative" }}>
+          <ProductImage src={imageUrl} />
+          <Back onClick={handleBack}>
+            <Image src={arrow} width={40} height={40} />
+          </Back>
 
-        <Share>
-          <Image src={share} onClick={handleShare} width={40} height={40} />
-        </Share>
-      </div>
+          <Share onClick={handleShare}>
+            <Image src={share} width={40} height={40} />
+          </Share>
+        </div>
 
-      <ProductBody>
-        <HStack>
-          <ProductTitle>{title}</ProductTitle>
-          {loved ? (
-            <LoveFill onClick={handleAddWishList} />
-          ) : (
-            <LoveOutline onClick={handleAddWishList} />
-          )}
-        </HStack>
-        <ProductDesc>{description}</ProductDesc>
-      </ProductBody>
+        <ProductBody>
+          <HStack>
+            <ProductTitle>{title}</ProductTitle>
+            {loved ? (
+              <LoveFill onClick={handleAddWishList} />
+            ) : (
+              <LoveOutline onClick={handleAddWishList} />
+            )}
+          </HStack>
+          <ProductDesc>{description}</ProductDesc>
+        </ProductBody>
 
-      <FlexEnd>
-        <ProductPrice>{price}</ProductPrice>
-        <BuyButton onClick={handleBuy}>Buy</BuyButton>
-      </FlexEnd>
-    </Container>
+        <FlexEnd>
+          <ProductPrice>{price}</ProductPrice>
+          <BuyButton onClick={handleBuy}>Buy</BuyButton>
+        </FlexEnd>
+      </Container>
+    </>
   );
 }
 
