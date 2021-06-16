@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useDispatch, useStore } from "react-redux";
+import { useStore } from "react-redux";
 import { Love, Scroll } from "./styles";
 import { HStack, VStack, Container } from "./styles";
 import Searchbar from "../components/Searchbar";
@@ -9,15 +9,16 @@ import Category from "../components/Category";
 import ProductCard from "../components/ProductCard";
 import Navigation from "../components/Navigation";
 import api from "../api/productApi";
-import { productsLoaded, categoriesLoaded } from "../features/productSlice"
+import { productsLoaded, categoriesLoaded } from "../features/productSlice";
+import withAuth from "../utils/withAuth";
 
 const Home = (props) => {
   const searchRef = useRef(null);
   const router = useRouter();
-  const store = useStore()
+  const store = useStore();
 
-  store.dispatch(productsLoaded(props.response.data.products))
-  store.dispatch(categoriesLoaded(props.response.data.categories))
+  store.dispatch(productsLoaded(props.response.data.products));
+  store.dispatch(categoriesLoaded(props.response.data.categories));
 
   const handleFocus = (e) => {
     router.push("/search");
@@ -68,8 +69,8 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { response }, // will be passed to the page component as props
+    props: { response },
   };
 }
 
-export default Home;
+export default withAuth(Home);
