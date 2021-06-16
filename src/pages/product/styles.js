@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Image from "next/image";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsFillHeartFill } from "react-icons/bs";
 
-export const ProductImage = styled(Image)`
-  background-color: lavender;
+export const ProductImage = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const Back = styled.div`
