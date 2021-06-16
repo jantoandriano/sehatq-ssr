@@ -29,18 +29,18 @@ export const FlexEnd = styled.div`
 export const LoveFill = styled(BsFillHeartFill)`
   width: 30px;
   height: 30px;
-  position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 10px;
   color: red;
+  position: absolute;
 `;
 
 export const LoveOutline = styled(AiOutlineHeart)`
   width: 30px;
   height: 30px;
-  position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 10px;
+  position: absolute;
 `;
 
 export const Love = styled(AiOutlineHeart)`

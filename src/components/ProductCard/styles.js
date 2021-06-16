@@ -16,5 +16,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: 1px solid black;
 
 `;

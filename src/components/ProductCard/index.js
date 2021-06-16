@@ -17,11 +17,10 @@ function ProductCard({ id, imageUrl, title, loved }) {
         <ImageProduct src={imageUrl} width={200} height={200} />
       </Link>
       <ProductName>{title}</ProductName>
-
-      {!loved ? (
-        <LoveOutline onClick={handleAddWishList} />
-      ) : (
+      {loved ? (
         <LoveFill onClick={handleAddWishList} />
+      ) : (
+        <LoveOutline onClick={handleAddWishList} />
       )}
     </Wrapper>
   );

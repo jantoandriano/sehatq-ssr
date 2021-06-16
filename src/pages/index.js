@@ -1,25 +1,23 @@
 import React, { useRef, useEffect } from "react";
-import Head from "next/head"
+import Head from "next/head";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Love, Scroll } from "./styles";
 import { HStack, VStack, Container } from "./styles";
 import Searchbar from "../components/Searchbar";
 import Category from "../components/Category";
 import ProductCard from "../components/ProductCard";
 import Navigation from "../components/Navigation";
+import api from "../api/productApi";
 import { fetchProducts } from "../features/productSlice";
 
-const Home = () => {
+const Home = (props) => {
   const searchRef = useRef(null);
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const categories = useSelector((state) => state.products.categories);
-  const products = useSelector((state) => state.products.productsName);
-
   const handleFocus = (e) => {
-    router.push("/search-page");
+    router.push("/search");
   };
 
   const handleToWishListPage = () => {
@@ -29,6 +27,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  if (props.categories !== undefined && props.products !== undefined) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <>
@@ -43,12 +45,12 @@ const Home = () => {
           <Searchbar ref={searchRef} handleFocus={handleFocus} />
         </HStack>
         <Scroll>
-          {categories.map((category) => (
+          {props.response.categories.map((category) => (
             <Category key={category.id} {...category} />
           ))}
         </Scroll>
         <VStack>
-          {products.map((product) => (
+          {props.response.products.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
         </VStack>
@@ -57,5 +59,27 @@ const Home = () => {
     </>
   );
 };
+
+export async function getStaticProps(context) {
+  let response;
+  try {
+    let productApi = new api(
+      "https://private-4639ce-ecommerce56.apiary-mock.com/home"
+    );
+    const { data } = await productApi.fetchProducts();
+
+    response = data;
+
+    dispatch(productsLoaded(response.products));
+    dispatch(categoriesLoaded(response.categories));
+    return response;
+  } catch (err) {
+    console.log(err, "===");
+  }
+
+  return {
+    props: { response }, // will be passed to the page component as props
+  };
+}
 
 export default Home;
