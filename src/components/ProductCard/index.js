@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { ImageProduct, ProductName, Wrapper } from "./styles";
+import { ProductName, Wrapper } from "./styles";
+import ImageComp from "../Image";
 import { LoveOutline, LoveFill } from "../../pages/styles";
 import { addWishList } from "../../features/productSlice";
 
@@ -13,8 +15,8 @@ function ProductCard({ id, imageUrl, title, loved }) {
 
   return (
     <Wrapper>
-      <Link href={`/product/${id}`}>
-        <ImageProduct
+      <Link href={`/product/${id}`} passHref={true}>
+        <ImageComp
           src={imageUrl}
           width={200}
           height={200}

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsFillHeartFill } from "react-icons/bs";
 
-export const ProductImage = styled.div`
+export const ProductImageWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, HStack, FlexEnd } from "../styles";
 import {
-  ProductImage,
+  ProductImageWrapper,
   Back,
   Share,
   ProductBody,
@@ -54,13 +54,13 @@ function DetailProduct() {
         <meta property="image" content={imageUrl} key="image" />
         <meta property="title" content={title} key="title" />
         <meta property="description" content={description} key="description" />
-        <meta name="robots" content="noindex,nofollow"/>
+        <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Container>
         <div style={{ position: "relative" }}>
-          <ProductImage>
+          <ProductImageWrapper>
             <Image src={imageUrl} width="200px" height="200px" />
-          </ProductImage>
+          </ProductImageWrapper>
           <Back onClick={handleBack}>
             <Image src={arrow} width={40} height={40} />
           </Back>
