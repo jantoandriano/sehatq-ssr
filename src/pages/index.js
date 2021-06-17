@@ -37,6 +37,8 @@ const Home = (props) => {
         <title>SehatQ</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="Icon" href="../../public/favicon.ico" />
+        <meta charSet="utf-8" />
+        <meta name="description" content="Home Page" />
       </Head>
       <Container>
         <HStack>
@@ -69,4 +71,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default Home
+export default Home;
