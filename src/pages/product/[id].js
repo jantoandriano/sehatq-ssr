@@ -51,10 +51,9 @@ function DetailProduct() {
         <link rel="Icon" href="../../../public/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
-        <meta name="description" content={description} />
-        <meta property="og:image" content={imageUrl} key="ogimage" />
-        <meta property="og:title" content={title} key="ogtitle" />
-        <meta property="og:description" content={description} key="ogdesc" />
+        <meta property="image" content={imageUrl} key="ogimage" />
+        <meta property="title" content={title} key="ogtitle" />
+        <meta property="description" content={description} key="description" />
       </Head>
       <Container>
         <div style={{ position: "relative" }}>
