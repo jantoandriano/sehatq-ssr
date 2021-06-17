@@ -47,13 +47,14 @@ function DetailProduct() {
   return (
     <>
       <Head>
-        <title>Product Detail</title>
+        <title>{title}</title>
         <link rel="Icon" href="../../../public/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
-        <meta property="image" content={imageUrl} key="ogimage" />
-        <meta property="title" content={title} key="ogtitle" />
+        <meta property="image" content={imageUrl} key="image" />
+        <meta property="title" content={title} key="title" />
         <meta property="description" content={description} key="description" />
+        <meta name="robots" content="noindex,nofollow"/>
       </Head>
       <Container>
         <div style={{ position: "relative" }}>

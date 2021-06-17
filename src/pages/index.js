@@ -38,7 +38,9 @@ const Home = (props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="Icon" href="../../public/favicon.ico" />
         <meta charSet="utf-8" />
+        <meta property="title" content="SehatQ Home Page" key="title" />
         <meta name="description" content="Home Page" />
+        <meta name="robots" content="noindex,nofollow"/>
       </Head>
       <Container>
         <HStack>
