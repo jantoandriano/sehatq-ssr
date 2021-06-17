@@ -20,3 +20,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 3. css in server menggunakan styled-components (basic) 
 4. menggunakan state management (redux, redux/toolkit) 
 5. dispatch action di server using next-wrapper-redux (di commitan berbeda)
+6. basic SEO 
