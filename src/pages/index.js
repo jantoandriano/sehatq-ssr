@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Head from "next/head";
+import HeadTags from "../components/HeadTags";
 import { useRouter } from "next/router";
 import { useStore } from "react-redux";
 import { Love, Scroll } from "./styles";
@@ -8,7 +8,6 @@ import Searchbar from "../components/Searchbar";
 import Category from "../components/Category";
 import ProductCard from "../components/ProductCard";
 import Navigation from "../components/Navigation";
-
 import {
   fetchProducts,
   productsLoaded,
@@ -33,15 +32,7 @@ const Home = (props) => {
 
   return (
     <>
-      <Head>
-        <title>SehatQ</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="Icon" href="../../public/favicon.ico" />
-        <meta charSet="utf-8" />
-        <meta property="title" content="SehatQ Home Page" key="title" />
-        <meta name="description" content="Home Page" />
-        <meta name="robots" content="noindex,nofollow"/>
-      </Head>
+      <HeadTags title="SehatQ" description="SehatQ Home Page" />
       <Container>
         <HStack>
           <Love onClick={handleToWishListPage} />

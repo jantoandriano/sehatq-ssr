@@ -1,8 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
+import HeadTags from "../../components/HeadTags";
 import { Container, HStack, FlexEnd } from "../styles";
 import {
   ProductImageWrapper,
@@ -46,16 +46,7 @@ function DetailProduct() {
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <link rel="Icon" href="../../../public/favicon.ico" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta charSet="utf-8" />
-        <meta property="image" content={imageUrl} key="image" />
-        <meta property="title" content={title} key="title" />
-        <meta property="description" content={description} key="description" />
-        <meta name="robots" content="noindex,nofollow" />
-      </Head>
+      <HeadTags title={title} imageUrl={imageUrl} description={description} />
       <Container>
         <div style={{ position: "relative" }}>
           <ProductImageWrapper>
@@ -69,7 +60,6 @@ function DetailProduct() {
             <Image src={share} width={40} height={40} />
           </Share>
         </div>
-
         <ProductBody>
           <HStack>
             <ProductTitle>{title}</ProductTitle>
@@ -81,7 +71,6 @@ function DetailProduct() {
           </HStack>
           <ProductDesc>{description}</ProductDesc>
         </ProductBody>
-
         <FlexEnd>
           <ProductPrice>{price}</ProductPrice>
           <BuyButton onClick={handleBuy}>Buy</BuyButton>
