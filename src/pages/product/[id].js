@@ -20,7 +20,6 @@ import arrow from "../../assets/arrow_back.svg";
 import share from "../../assets/share.svg";
 import { purchaseProduct, addWishList } from "../../features/productSlice";
 import { share as Toast } from "../../utils/toast";
-import withAuth from "../../utils/withAuth";
 
 function DetailProduct() {
   const router = useRouter();
@@ -80,4 +79,4 @@ function DetailProduct() {
   );
 }
 
-export default withAuth(DetailProduct);
+export default DetailProduct
