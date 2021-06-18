@@ -5,7 +5,7 @@ import { Wrapper } from "./styles";
 const ImageComp = React.forwardRef((props, ref) => {
   return (
     <Wrapper href={props.href} ref={ref}>
-      <Image {...props} />
+      <Image {...props} priority="true" />
     </Wrapper>
   );
 });
