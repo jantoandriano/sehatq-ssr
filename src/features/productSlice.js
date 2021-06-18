@@ -18,20 +18,28 @@ export const productSlice = createSlice({
       state.categories = action.payload;
     },
     purchaseProduct: (state, action) => {
-      let purchasedItem = state.productsName.find(
-        (item) => item.id === action.payload
-      );
+      if (localStorage.getItem("access_token")) {
+        let purchasedItem = state.productsName.find(
+          (item) => item.id === action.payload
+        );
 
-      state.purchasedProducts = [...state.purchasedProducts, purchasedItem];
-      Toast("Enjoy");
+        state.purchasedProducts = [...state.purchasedProducts, purchasedItem];
+        Toast("Enjoy");
+      } else {
+        window.location.href = "/login";
+      }
     },
     addWishList: (state, action) => {
-      let wishListItem = state.productsName.find(
-        (item) => item.id === action.payload
-      );
+      if (localStorage.getItem("access_token")) {
+        let wishListItem = state.productsName.find(
+          (item) => item.id === action.payload
+        );
 
-      state.wishListProducts = [...state.wishListProducts, wishListItem];
-      Toast("Added to Wishlist");
+        state.wishListProducts = [...state.wishListProducts, wishListItem];
+        Toast("Added to Wishlist");
+      } else {
+        window.location.href = "/login";
+      }
     },
   },
 });

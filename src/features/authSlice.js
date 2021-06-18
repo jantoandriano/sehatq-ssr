@@ -13,11 +13,13 @@ export const authSlice = createSlice({
     loginGmail: (state, action) => {
       state.access_token = action.payload;
     },
-    fakeLogin: () => {
+    fakeLogin: (state, action) => {
       localStorage.setItem(
         "access_token",
         "ya29.a0AfH6SMBlwPgG00n1nwdtjKhWHvFZzAEQHK9I7NX_-LS8ZRktMbqfrQ0LTUGmzj88Enqp9s2H_"
       );
+      state.access_token =
+        "ya29.a0AfH6SMBlwPgG00n1nwdtjKhWHvFZzAEQHK9I7NX_-LS8ZRktMbqfrQ0LTUGmzj88Enqp9s2H_";
     },
   },
 });
