@@ -14,6 +14,9 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## notes
+authentication atau private route nya berlaku kalau user ingin buy, add to wishlist, cart page, profile page 
+
 ## Yang di implementasi :
 ```bash
 1. SSR dan CSR
