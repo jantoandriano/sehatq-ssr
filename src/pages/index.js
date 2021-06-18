@@ -20,7 +20,7 @@ const Home = (props) => {
   const store = useStore();
 
   store.dispatch(productsLoaded(props.response.data.products));
-  store.dispatch(categoriesLoaded(props.response.data.categories));
+  // store.dispatch(categoriesLoaded(props.response.data.categories));
 
   const handleFocus = (e) => {
     router.push("/search");
