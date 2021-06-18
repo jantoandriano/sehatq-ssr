@@ -15,9 +15,12 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Yang di implementasi :
+```bash
 1. SSR dan CSR
 2. Fundamental dari Next Js (next/link, next/image, next/router, next/head, data-fetching, routing, custom _app, _document file)
 3. css in server menggunakan styled-components (basic) 
 4. menggunakan state management (redux, redux/toolkit) 
 5. dispatch action di server using next-wrapper-redux (di commitan berbeda)
 6. basic SEO 
+7. SPA
+```
